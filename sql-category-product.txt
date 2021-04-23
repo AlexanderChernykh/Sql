@@ -1,0 +1,34 @@
+CREATE TABLE Category (
+	Id INT PRIMARY KEY,
+	NameCategory NVARCHAR(255) NOT NULL
+);
+
+INSERT INTO Category 
+VALUES  (1, 'Продукты'),
+        (2, 'Чистящие и моющие средства');
+
+CREATE TABLE Product (
+	Id int PRIMARY KEY,
+	NameProduct varchar(255) NOT NULL,
+);
+
+INSERT INTO Product
+VALUES  (1, 'Хлеб'),
+	(2, 'Помидоры'),
+	(3, 'Моющая жидкость для пола');
+
+CREATE TABLE ProductCategory (
+	ProductId  INT not null,
+	CategoryId INT not null
+);
+
+INSERT INTO ProductCategory
+VALUES  (2, 1),
+	(3, 1),
+	(3, 2);
+
+select product.NameProduct [Имя продукта], category.NameCategory [Имя категории]
+from Product product
+left join ProductCategory productcategiry on product.Id = productcategiry.ProductId
+inner join Category category on category.Id = productcategiry.CategoryId
+
