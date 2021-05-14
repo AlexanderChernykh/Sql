@@ -4,18 +4,18 @@ CREATE TABLE Category (
 );
 
 INSERT INTO Category 
-VALUES  (1, 'Продукты'),
-        (2, 'Чистящие и моющие средства');
+VALUES  (1, N'Продукты'),
+        (2, N'Чистящие и моющие средства');
 
 CREATE TABLE Product (
 	Id int PRIMARY KEY,
-	NameProduct varchar(255) NOT NULL,
+	NameProduct nvarchar(255) NOT NULL,
 );
 
 INSERT INTO Product
-VALUES  (1, 'Хлеб'),
-	(2, 'Помидоры'),
-	(3, 'Моющая жидкость для пола');
+VALUES  (1, N'Хлеб'),
+	(2, N'Помидоры'),
+	(3, N'Моющая жидкость для пола');
 
 CREATE TABLE ProductCategory (
 	ProductId  INT not null,
@@ -27,8 +27,9 @@ VALUES  (2, 1),
 	(3, 1),
 	(3, 2);
 
-select product.NameProduct [Имя продукта], category.NameCategory [Имя категории]
-from Product product
-left join ProductCategory productcategiry on product.Id = productcategiry.ProductId
+select NameProduct [Имя продукта], NameCategory [Имя категории]
+from Product
+left join ProductCategory productcategiry on Id = productcategiry.ProductId
 inner join Category category on category.Id = productcategiry.CategoryId
+
 
